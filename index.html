@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De Aguirres - Adoración Bíblica</title>
+    <meta name="description" content="De Aguirres - Dúo de adoración bíblica. Pablo y Lina compartiendo música que muestra quién es Dios.">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fdeaguirre3616back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.12"></script>
+  <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2"></script>
+  </head>
+<body class="antialiased bg-charcoal text-cream overflow-x-hidden">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="text-logo">De Aguirres</div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <a href="#about" class="nav-link">Nosotros</a>
+                    <a href="#music" class="nav-link">Música</a>
+                    <a href="#discografia" class="nav-link">Discografía</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="flex items-center gap-4">
+                    <!-- <a href="https://open.spotify.com/intl-es/track/1QgCxxPGkTXZ20m6rA9VOm" 
+                       target="_blank"
+                       class="btn-primary hidden sm:flex">
+                        Escuchar Ahora
+                    </a> -->
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden" id="mobile-menu-btn" style="color: #9A8C7C;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
+                            <path d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon" style="display: none;">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-menu-content">
+                <a href="#about" class="mobile-menu-link">Nosotros</a>
+                <a href="#music" class="mobile-menu-link">Música</a>
+                <a href="#discografia" class="mobile-menu-link">Discografía</a>
+                <a href="#contacto" class="mobile-menu-link">Contacto</a>
+                <a href="https://open.spotify.com/intl-es/track/1QgCxxPGkTXZ20m6rA9VOm" target="_blank" class="mobile-menu-cta">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                    Escuchar Ahora
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section: Cinematic Carousel -->
+    <section class="hero-section relative overflow-hidden">
+        <!-- Atmospheric Background -->
+        <div class="hero-glow"></div>
+        
+        <!-- Carousel Container -->
+        <div class="hero-carousel" id="hero-carousel">
+            <!-- Slide 1 -->
+            <div class="carousel-slide active">
+                <img src="./assets/banda.png" 
+                     alt="De Aguirres performing live"
+                     class="carousel-image">
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+                <img src="./assets/banda1.png" 
+                     alt="De Aguirres studio session"
+                     class="carousel-image">
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+                <img src="./assets/banda2.png" 
+                     alt="De Aguirres acoustic performance"
+                     class="carousel-image">
+            </div>
+
+            <!-- Gradient Overlay -->
+            <div class="carousel-overlay"></div>
+
+            <!-- Content Overlay -->
+            <div class="hero-content">
+                <div class="max-w-7xl mx-auto px-6 lg:px-8 h-full flex items-center">
+                    <div class="max-w-2xl">
+                        <!-- New Single Badge -->
+                        <div class="floating-badge">
+                            <span class="badge-pulse"></span>
+                            <span class="badge-text">Adoración Bíblica</span>
+                        </div>
+
+                        <!-- Main Headline -->
+                        <h1 class="hero-title">
+                            De Aguirres
+                        </h1>
+
+                        <!-- Subtitle -->
+                        <p class="hero-subtitle">
+                            Mostrando quién es Dios a través de la música. Pablo y Lina comparten su adoración bíblica con el mundo.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="hero-cta-group">
+                            <a href="https://open.spotify.com/intl-es/track/1QgCxxPGkTXZ20m6rA9VOm" 
+                               target="_blank"
+                               class="btn-hero-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                                </svg>
+                                Escuchar en Spotify
+                            </a>
+                            
+                            <a href="https://www.youtube.com/@de.aguirres" 
+                               target="_blank"
+                               class="btn-hero-secondary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                                Ver Videos
+                            </a>
+                        </div>
+
+                                            </div>
+                </div>
+            </div>
+
+            <!-- Carousel Dots -->
+            <div class="carousel-dots">
+                <button class="dot active" data-slide="0"></button>
+                <button class="dot" data-slide="1"></button>
+                <button class="dot" data-slide="2"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Historia - Sección Unificada -->
+     <section id="about" class="section-unified">
+        <div class="unified-texture"></div>
+        <div class="floating-ornament ornament-1"></div>
+        <div class="floating-ornament ornament-2"></div>
+        
+        <!-- Título Principal Centrado -->
+        <div class="unified-main-header">
+            <p class="unified-main-label">Sobre nosotros</p>
+            <h2 class="unified-main-title">Conoce a De Aguirres</h2>
+            <div class="unified-main-divider"></div>
+        </div>
+
+        <div class="unified-container">
+            <!-- Columna Izquierda: Pablo & Lina -->
+            <div class="unified-left">
+                <div class="unified-about">
+                    <h2 class="unified-names">Pablo <span>&</span> Lina</h2>
+                    <p class="unified-project">Un proyecto de adoración bíblica</p>
+
+                    <p class="unified-quote">Nuestro deseo es simple: mostrar quién es Dios. De Él hablan nuestras canciones.</p>
+                    <div class="unified-photo-frame">
+                        <img src="./assets/conoce.png" alt="Pablo y Lina - De Aguirres">
+                    </div>
+
+                    <a href="https://www.instagram.com/de.aguirres" target="_blank" class="unified-instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                        <span>de.aguirres</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: La Serie -->
+            <div class="unified-right">
+                <div class="unified-serie">
+                    <div class="serie-header">
+                        <p class="serie-label">Nuestra Historia</p>
+                        <h3 class="serie-title">La Serie</h3>
+                    </div>
+
+                    <div class="serie-videos">
+                        <a href="https://youtu.be/TXZGyW6gdVw" target="_blank" class="serie-video">
+                            <div class="serie-video-thumb">
+                                <img src="./assets/nuestraHistoria/historia1.png" alt="Encuentro">
+                                <div class="serie-play">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="5 3 19 12 5 21 5 3"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="serie-video-info">
+                                <span class="serie-part">Parte 1</span>
+                                <span class="serie-name">ENCUENTRO</span>
+                            </div>
+                        </a>
+
+                        <a href="https://youtu.be/9qkH9785YIc" target="_blank" class="serie-video">
+                            <div class="serie-video-thumb">
+                                <img src="./assets/nuestraHistoria/historia2.png" alt="Testimonio">
+                                <div class="serie-play">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="5 3 19 12 5 21 5 3"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="serie-video-info">
+                                <span class="serie-part">Parte 2</span>
+                                <span class="serie-name">TESTIMONIO</span>
+                            </div>
+                        </a>
+
+                        <a href="https://youtu.be/INn46ksd4F4" target="_blank" class="serie-video">
+                            <div class="serie-video-thumb">
+                                <img src="./assets/nuestraHistoria/historia3.png" alt="Pacto">
+                                <div class="serie-play">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="5 3 19 12 5 21 5 3"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="serie-video-info">
+                                <span class="serie-part">Parte 3</span>
+                                <span class="serie-name">PACTO</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Player Section - Nuevo Sencillo -->
+    <section id="music" class="section-music">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+                <!-- Left: Album Artwork -->
+                <div class="album-artwork-container">
+                    <div class="album-artwork">
+                        <img src="./assets/caeElSol.png"
+                             alt="CAE EL SOL - Single Cover"
+                             class="artwork-image">
+                        <div class="artwork-glow"></div>
+                    </div>
+
+                    <!-- Floating Play Button -->
+                    <div class="floating-play-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Right: Player & Details -->
+                <div class="player-details">
+                    <div class="section-label">Nuevo Sencillo</div>
+                    <h2 class="section-title">𝑪𝘼𝑬 𝑬𝙇 𝙎𝙊𝙇</h2>
+                    <p class="section-description">
+                        Un canto que nos invita a celebrar el día de reposo que el Creador separó desde el principio de los tiempos.
+                        <br><br>
+                        Habla del momento en que el sol desciende, el trabajo queda atrás y se abre un tiempo apartado para estar juntos y buscar la presencia del Señor, reconociendo que el descanso también forma parte de nuestro caminar.
+                        <br><br>
+                        Esta canción es un llamado a exaltarle y adorarle agradeciendo el pacto eterno de Dios con Su pueblo. <strong>SHABAT SHALOM!</strong>
+                    </p>
+
+                    <!-- Spotify Embed -->
+                    <div class="spotify-player">
+                        <iframe
+                            style="border-radius: 12px;"
+                            src="https://open.spotify.com/embed/track/1QgCxxPGkTXZ20m6rA9VOm?utm_source=generator&theme=0"
+                            width="100%"
+                            height="152"
+                            frameBorder="0"
+                            allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy">
+                        </iframe>
+                    </div>
+
+                    <!-- Platform Links -->
+                    <div class="platform-links">
+                        <span class="platform-label">Escuchar en:</span>
+                        <div class="platform-buttons">
+                            <a href="https://open.spotify.com/intl-es/track/1QgCxxPGkTXZ20m6rA9VOm"
+                               target="_blank"
+                               class="platform-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                                </svg>
+                                Spotify
+                            </a>
+                            <a href="https://www.youtube.com/@de.aguirres"
+                               target="_blank"
+                               class="platform-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                </svg>
+                                YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestra Música Section - Spotify Style -->
+    <section id="discografia" class="section-musica">
+        <div class="musica-container">
+            <!-- Header -->
+            <div class="musica-header">
+                <div class="musica-header-content">
+                    <p class="musica-label">Discografía</p>
+                    <h2 class="musica-title">Nuestra Música</h2>
+                </div>
+                <a href="https://open.spotify.com/intl-es/artist/4tJn0BROmTI4n0kBkMAWyF" target="_blank" class="musica-ver-todo">
+                    Ver todo
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Carousel Container -->
+            <div class="musica-carousel-wrapper">
+                <div class="musica-carousel" id="musica-carousel">
+                    <!-- Track 1 - Cae el sol -->
+                    <a href="https://open.spotify.com/intl-es/track/1QgCxxPGkTXZ20m6rA9VOm" target="_blank" class="musica-track">
+                        <div class="musica-track-cover">
+                            <img src="./assets/caeElSol.png" alt="Cae el sol">
+                            <div class="musica-track-play">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="musica-track-info">
+                            <h3 class="musica-track-name">Cae el sol</h3>
+                            <p class="musica-track-artist">De Aguirres</p>
+                        </div>
+                    </a>
+
+                    <!-- Track 2 - Delante de Ti -->
+                    <a href="https://open.spotify.com/intl-es/track/0qusps3vA2y2mVgkJDvOtn?si=6e43f6ce047247ab" target="_blank" class="musica-track">
+                        <div class="musica-track-cover">
+                            <img src="./assets/canciones/delanteDeTi.png" alt="Delante de Ti">
+                            <div class="musica-track-play">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="musica-track-info">
+                            <h3 class="musica-track-name">Delante de Ti</h3>
+                            <p class="musica-track-artist">De Aguirres</p>
+                        </div>
+                    </a>
+
+                    <!-- Track 3 - Shalom (Live) -->
+                    <a href="https://open.spotify.com/intl-es/track/4sbnxyxwjVr09byJqBC4uT?si=6f2f9fbc663f41c9" target="_blank" class="musica-track">
+                        <div class="musica-track-cover">
+                            <img src="./assets/canciones/shalom.png" alt="Shalom - Live">
+                            <div class="musica-track-play">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="musica-track-info">
+                            <h3 class="musica-track-name">Shalom (Live)</h3>
+                            <p class="musica-track-artist">De Aguirres</p>
+                        </div>
+                    </a>
+
+                    <!-- Track 4 - Confiado -->
+                    <a href="https://open.spotify.com/intl-es/track/6kKZYejq3xrKJ011AOJ1Tn?si=a889f157305a48df" target="_blank" class="musica-track">
+                        <div class="musica-track-cover">
+                            <img src="./assets/canciones/confiado.png" alt="Confiado">
+                            <div class="musica-track-play">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="musica-track-info">
+                            <h3 class="musica-track-name">Confiado</h3>
+                            <p class="musica-track-artist">De Aguirres</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Spotify CTA -->
+            <div class="musica-cta">
+                <a href="https://open.spotify.com/intl-es/artist/4tJn0BROmTI4n0kBkMAWyF" target="_blank" class="musica-spotify-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                    <span>Escuchar en Spotify</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Síguenos en Redes Section -->
+    <section id="contacto" class="section-redes">
+        <div class="redes-bg-pattern"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="redes-content">
+                <!-- Header -->
+                <div class="redes-header">
+                    <p class="redes-label">Conecta con nosotros</p>
+                    <h2 class="redes-title">Únete a la Comunidad</h2>
+                    <p class="redes-subtitle">Sé parte de este camino de adoración. Síguenos para estar al tanto de nuevas canciones, videos y momentos especiales.</p>
+                </div>
+
+                <!-- Social Cards -->
+                <div class="redes-grid">
+                    <!-- Instagram Card -->
+                    <a href="https://www.instagram.com/de.aguirres" target="_blank" class="redes-card instagram">
+                        <div class="redes-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </div>
+                        <div class="redes-card-info">
+                            <span class="redes-card-name">Instagram</span>
+                            <span class="redes-card-handle">@de.aguirres</span>
+                        </div>
+                        <div class="redes-card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Spotify Card -->
+                    <a href="https://open.spotify.com/intl-es/artist/4tJn0BROmTI4n0kBkMAWyF" target="_blank" class="redes-card spotify">
+                        <div class="redes-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                            </svg>
+                        </div>
+                        <div class="redes-card-info">
+                            <span class="redes-card-name">Spotify</span>
+                            <span class="redes-card-handle">Escucha nuestra música</span>
+                        </div>
+                        <div class="redes-card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- YouTube Card -->
+                    <a href="https://www.youtube.com/@de.aguirres" target="_blank" class="redes-card youtube">
+                        <div class="redes-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </div>
+                        <div class="redes-card-info">
+                            <span class="redes-card-name">YouTube</span>
+                            <span class="redes-card-handle">Videos y en vivo</span>
+                        </div>
+                        <div class="redes-card-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Call to action message -->
+                <div class="redes-cta">
+                    <p>Cada seguidor es parte de esta familia de adoración</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Top Section -->
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">De Aguirres</div>
+                    <p class="footer-tagline">Mostrando quién es Dios a través de la música</p>
+                </div>
+
+                <!-- Social Links -->
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/de.aguirres" target="_blank" class="footer-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://open.spotify.com/intl-es/track/1QgCxxPGkTXZ20m6rA9VOm" target="_blank" class="footer-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@de.aguirres" target="_blank" class="footer-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 De Aguirres. Todos los derechos reservados.</p>
+                <div class="footer-credits">
+                    <span>Desarrollado por</span>
+                    <a href="https://tukicode.vercel.app/" target="_blank" class="tukicode-link">
+                        <span class="tuki">Tuki</span><span class="code">Code</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+<script id="dhws-dataInjector" src="/public/dhws-data-injector.js"></script>
+</body>
+</html>
