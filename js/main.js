@@ -1,400 +1,346 @@
-// De Aguirres Landing Page - Main JavaScript
+/**
+ * De Aguirres - Adoración Bíblica
+ * UX/UI Interactions, Custom Cursor, i18n, Music Player
+ */
 
-// ===================================
-// HERO CAROUSEL
-// ===================================
-(function() {
-  const carousel = document.getElementById('hero-carousel');
-  if (!carousel) return;
+document.addEventListener('DOMContentLoaded', () => {
 
-  const slides = carousel.querySelectorAll('.carousel-slide');
-  const dots = carousel.querySelectorAll('.dot');
-  let currentSlide = 0;
-  const slideInterval = 5000; // 5 seconds
-
-  function showSlide(index) {
-    // Remove active class from all slides and dots
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-
-    // Add active class to current slide and dot
-    slides[index].classList.add('active');
-    dots[index].classList.add('active');
-  }
-
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  // Auto-advance slides
-  let autoPlay = setInterval(nextSlide, slideInterval);
-
-  // Dot click handlers
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      currentSlide = index;
-      showSlide(currentSlide);
-      
-      // Reset auto-play timer
-      clearInterval(autoPlay);
-      autoPlay = setInterval(nextSlide, slideInterval);
-    });
-  });
-
-  // Pause on hover
-  carousel.addEventListener('mouseenter', () => {
-    clearInterval(autoPlay);
-  });
-
-  carousel.addEventListener('mouseleave', () => {
-    autoPlay = setInterval(nextSlide, slideInterval);
-  });
-})();
-
-// ===================================
-// MOBILE MENU
-// ===================================
-(function() {
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = mobileMenuBtn?.querySelector('.menu-icon');
-  const closeIcon = mobileMenuBtn?.querySelector('.close-icon');
-  const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
-
-  if (!mobileMenuBtn || !mobileMenu) return;
-
-  function toggleMenu() {
-    const isOpen = mobileMenu.classList.contains('active');
-
-    if (isOpen) {
-      // Close menu
-      mobileMenu.classList.remove('active');
-      document.body.classList.remove('menu-open');
-      menuIcon.style.display = 'block';
-      closeIcon.style.display = 'none';
-    } else {
-      // Open menu
-      mobileMenu.classList.add('active');
-      document.body.classList.add('menu-open');
-      menuIcon.style.display = 'none';
-      closeIcon.style.display = 'block';
-    }
-  }
-
-  mobileMenuBtn.addEventListener('click', toggleMenu);
-
-  // Close menu when clicking a link
-  mobileMenuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
-      document.body.classList.remove('menu-open');
-      menuIcon.style.display = 'block';
-      closeIcon.style.display = 'none';
-    });
-  });
-
-  // Close menu on escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-      toggleMenu();
-    }
-  });
-})();
-
-// ===================================
-// NEWSLETTER FORM
-// ===================================
-(function() {
-  const form = document.getElementById('newsletter-form');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const emailInput = form.querySelector('input[type="email"]');
-    const email = emailInput.value;
-
-    // Here you would typically send this to your backend
-    console.log('Newsletter signup:', email);
-    
-    // Show success message
-    alert('¡Gracias por suscribirte! Te mantendremos al tanto de nuestras novedades.');
-    
-    // Reset form
-    form.reset();
-  });
-})();
-
-// ===================================
-// SMOOTH SCROLL FOR ANCHOR LINKS
-// ===================================
-(function() {
-  const anchorLinks = document.querySelectorAll('a[href^="#"]');
-  
-  anchorLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      
-      // Skip if it's just "#"
-      if (href === '#') return;
-      
-      e.preventDefault();
-      
-      const target = document.querySelector(href);
-      if (target) {
-        const offsetTop = target.offsetTop - 80; // Account for fixed nav
-        
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-})();
-
-// ===================================
-// SCROLL ANIMATIONS
-// ===================================
-(function() {
-  const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -80px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-in');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Observe all main sections
-  const animatedSections = document.querySelectorAll('.section-unified, .section-music, .section-musica, .section-redes');
-  animatedSections.forEach(el => observer.observe(el));
-
-  // Staggered animations for cards
-  const staggerObserver = new IntersectionObserver((entries) => {
-    let delay = 0;
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('animate-in');
-        }, delay);
-        delay += 120;
-        staggerObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-  // Staggered animations for cards and tracks
-  const staggeredElements = document.querySelectorAll('.musica-track, .redes-card, .serie-video');
-  staggeredElements.forEach(el => staggerObserver.observe(el));
-})();
-
-// ===================================
-// PARALLAX EFFECT
-// ===================================
-(function() {
-  const parallaxElements = document.querySelectorAll('.hero-carousel, .unified-photo-frame, .album-artwork');
-
-  let ticking = false;
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const scrolled = window.pageYOffset;
-
-        // Subtle parallax for hero
-        const heroCarousel = document.querySelector('.hero-carousel');
-        if (heroCarousel && scrolled < window.innerHeight) {
-          heroCarousel.style.transform = `translateY(${scrolled * 0.3}px)`;
+    // ===================================
+    // 1. TRANSLATIONS (ES / EN)
+    // ===================================
+    const translations = {
+        es: {
+            'nav.about': 'Nosotros',
+            'nav.series': 'La Serie',
+            'nav.music': 'Música',
+            'nav.support': 'Colaborar',
+            'nav.contact': 'Contacto',
+            'hero.subtitle': 'Adoración Bíblica',
+            'hero.discover': 'Descubrir',
+            'about.quote': '"Nuestro deseo es simple: mostrar quién es Dios. De Él hablan nuestras canciones."',
+            'series.label': 'La Serie',
+            'series.title': 'Nuestra Historia',
+            'series.description': 'Una travesía audiovisual sobre cómo Dios unió nuestros caminos y ministerio.',
+            'series.part1': 'Parte 1',
+            'series.part2': 'Parte 2',
+            'series.part3': 'Parte 3',
+            'series.encounter': 'Encuentro',
+            'series.testimony': 'Testimonio',
+            'series.covenant': 'Pacto',
+            'music.label': 'Lanzamientos',
+            'music.title': 'Música',
+            'music.latest': 'Último Sencillo',
+            'music.other': 'Otras Canciones',
+            'music.single': 'Sencillo',
+            'music.live': 'En Vivo',
+            'music.caeelsol.desc': 'Un canto que nos invita a celebrar el día de reposo que el Creador separó desde el principio de los tiempos.',
+            'contact.label': 'Contacto',
+            'contact.title': 'Solicitud para Evento',
+            'contact.question': '"¿Te interesa invitar a DE AGUIRRES a tu evento?"',
+            'contact.description': 'Leemos con atención cada invitación. Completá el formulario y contanos sobre tu evento y el corazón detrás de la invitación.',
+            'contact.cta': 'Completar Formulario',
+            'support.label': 'Apoyo',
+            'support.title': 'Donaciones',
+            'support.subtitle': '"Sé parte del proyecto y ayúdanos a crecer"',
+            'support.description': 'Siembra en nuestro ministerio. Tu generosidad nos permite seguir creando y compartiendo adoración bíblica.',
+            'footer.dev': 'Desarrollado por TukiCode',
+            'player.choose': 'Elegir canción',
+            'player.playing': 'Reproduciendo',
+            'disco.label': 'Discografía',
+            'disco.title': 'Nuestra Música'
+        },
+        en: {
+            'nav.about': 'About',
+            'nav.series': 'The Series',
+            'nav.music': 'Music',
+            'nav.support': 'Support',
+            'nav.contact': 'Contact',
+            'hero.subtitle': 'Biblical Worship',
+            'hero.discover': 'Discover',
+            'about.quote': '"Our desire is simple: to show who God is. Our songs speak of Him."',
+            'series.label': 'The Series',
+            'series.title': 'Our Story',
+            'series.description': 'An audiovisual journey about how God united our paths and ministry.',
+            'series.part1': 'Part 1',
+            'series.part2': 'Part 2',
+            'series.part3': 'Part 3',
+            'series.encounter': 'Encounter',
+            'series.testimony': 'Testimony',
+            'series.covenant': 'Covenant',
+            'music.label': 'Releases',
+            'music.title': 'Music',
+            'music.latest': 'Latest Single',
+            'music.other': 'Other Songs',
+            'music.single': 'Single',
+            'music.live': 'Live',
+            'music.caeelsol.desc': 'A song that invites us to celebrate the day of rest that the Creator set apart from the beginning of time.',
+            'contact.label': 'Contact',
+            'contact.title': 'Event Request',
+            'contact.question': '"Interested in inviting DE AGUIRRES to your event?"',
+            'contact.description': 'We carefully read every invitation. Fill out the form and tell us about your event and the heart behind the invitation.',
+            'contact.cta': 'Fill Out Form',
+            'support.label': 'Support',
+            'support.title': 'Donations',
+            'support.subtitle': '"Be part of the project and help us grow"',
+            'support.description': 'Sow into our ministry. Your generosity allows us to keep creating and sharing biblical worship.',
+            'footer.dev': 'Developed by TukiCode',
+            'player.choose': 'Choose song',
+            'player.playing': 'Now playing',
+            'disco.label': 'Discography',
+            'disco.title': 'Our Music'
         }
+    };
 
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
-})();
+    let currentLang = 'es';
 
-// ===================================
-// MOUSE MOVE EFFECTS
-// ===================================
-(function() {
-  const cards = document.querySelectorAll('.musica-track, .redes-card');
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
 
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      const rotateX = (y - centerY) / 20;
-      const rotateY = (centerX - x) / 20;
-
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.02)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
-    });
-  });
-})();
-
-// ===================================
-// COUNTER ANIMATION FOR STATS
-// ===================================
-(function() {
-  const animateCounter = (element, target) => {
-    let current = 0;
-    const increment = target / 50;
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        element.textContent = target.toLocaleString() + '+';
-        clearInterval(timer);
-      } else {
-        element.textContent = Math.floor(current).toLocaleString() + '+';
-      }
-    }, 30);
-  };
-
-  const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const statNumbers = entry.target.querySelectorAll('.stat-number');
-        statNumbers.forEach(stat => {
-          const text = stat.textContent;
-          const number = parseFloat(text.replace(/[^0-9.]/g, ''));
-          if (text.includes('K')) {
-            stat.textContent = '0';
-            animateCounter(stat, number);
-            stat.dataset.suffix = 'K+';
-          }
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
         });
-        statsObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
 
-  const heroStats = document.querySelector('.hero-stats');
-  if (heroStats) statsObserver.observe(heroStats);
-})();
-
-// ===================================
-// SMOOTH REVEAL ON SCROLL
-// ===================================
-(function() {
-  const revealElements = document.querySelectorAll('.unified-main-header, .musica-cta, .redes-cta');
-
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  revealElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-    revealObserver.observe(el);
-  });
-})();
-
-// ===================================
-// FLOATING PLAY BUTTON INTERACTION
-// ===================================
-(function() {
-  const playBtn = document.querySelector('.floating-play-btn');
-  if (!playBtn) return;
-
-  playBtn.addEventListener('click', () => {
-    // Open Spotify player or trigger music playback
-    window.open('https://open.spotify.com/intl-es/track/1QgCxxPGkTXZ20m6rA9VOm', '_blank');
-  });
-})();
-
-// ===================================
-// NAVIGATION SCROLL EFFECT
-// ===================================
-(function() {
-  const nav = document.querySelector('.glass-nav');
-  if (!nav) return;
-
-  let lastScroll = 0;
-
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 100) {
-      nav.style.background = '#D9C6A6';
-      nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-    } else {
-      nav.style.background = '#D9C6A6';
-      nav.style.boxShadow = 'none';
+        // Update all lang buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        });
     }
 
-    lastScroll = currentScroll;
-  });
-})();
-
-// ===================================
-// LAZY LOAD IMAGES
-// ===================================
-(function() {
-  if ('loading' in HTMLImageElement.prototype) {
-    // Browser supports native lazy loading
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    images.forEach(img => {
-      img.src = img.dataset.src || img.src;
+    // Language switcher listeners
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            setLanguage(btn.getAttribute('data-lang'));
+        });
     });
-  } else {
-    // Fallback for browsers that don't support lazy loading
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-    document.body.appendChild(script);
-  }
-})();
 
-// ===================================
-// PREVENT LAYOUT SHIFT
-// ===================================
-(function() {
-  // Add aspect ratio boxes to prevent layout shift during image loading
-  const images = document.querySelectorAll('img');
-  
-  images.forEach(img => {
-    if (!img.complete) {
-      img.style.minHeight = '200px';
-      
-      img.addEventListener('load', () => {
-        img.style.minHeight = '';
-      });
+
+    // ===================================
+    // 2. CUSTOM CURSOR (Rita Payés Style)
+    // ===================================
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorRing = document.getElementById('cursor-ring');
+
+    if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+        });
+
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+            cursorRing.style.transform = `translate(${ringX - 20}px, ${ringY - 20}px)`;
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        // Hover effect on interactive elements
+        const hoverTargets = document.querySelectorAll('a, button, [role="button"], input, select, textarea, .group');
+        hoverTargets.forEach(el => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+        });
+
+        // Hide cursor when leaving window
+        document.addEventListener('mouseleave', () => {
+            cursorDot.classList.add('hide');
+            cursorRing.classList.add('hide');
+        });
+        document.addEventListener('mouseenter', () => {
+            cursorDot.classList.remove('hide');
+            cursorRing.classList.remove('hide');
+        });
     }
-  });
-})();
 
-// ===================================
-// PERFORMANCE MONITORING
-// ===================================
-(function() {
-  if ('performance' in window) {
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const perfData = performance.getEntriesByType('navigation')[0];
-        console.log('Page Load Time:', perfData.loadEventEnd - perfData.fetchStart, 'ms');
-      }, 0);
+
+    // ===================================
+    // 3. HERO ENTRANCE ANIMATION
+    // ===================================
+    const heroElements = document.querySelectorAll('.hero-entrance, .hero-entrance-title, .hero-entrance-subtitle, .hero-entrance-image');
+    heroElements.forEach((el, index) => {
+        setTimeout(() => el.classList.add('visible'), 200 + (index * 250));
     });
-  }
-})();
+
+
+    // ===================================
+    // 4. MOBILE MENU TOGGLE
+    // ===================================
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuText = document.getElementById('menu-text');
+    const menuLinks = document.querySelectorAll('.mobile-menu-link');
+    let isMenuOpen = false;
+
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+            mobileMenu.style.display = 'flex';
+            requestAnimationFrame(() => {
+                mobileMenu.classList.remove('pointer-events-none', 'opacity-0');
+            });
+            menuText.textContent = 'Cerrar';
+            document.body.style.overflow = 'hidden';
+        } else {
+            mobileMenu.classList.add('pointer-events-none', 'opacity-0');
+            menuText.textContent = 'Menu';
+            document.body.style.overflow = '';
+            setTimeout(() => { mobileMenu.style.display = 'none'; }, 500);
+        }
+    }
+
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => { if (isMenuOpen) toggleMenu(); });
+        });
+    }
+
+
+    // ===================================
+    // 5. NAVBAR SCROLL EFFECT
+    // ===================================
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+        if (!navbar) return;
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-lg', 'py-4');
+            navbar.classList.remove('py-6');
+        } else {
+            navbar.classList.remove('shadow-lg', 'py-4');
+            navbar.classList.add('py-6');
+        }
+    });
+
+
+    // ===================================
+    // 6. SCROLL REVEAL ANIMATIONS
+    // ===================================
+    const revealSelectors = '.reveal, .reveal-slow, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade';
+    const revealElements = document.querySelectorAll(revealSelectors);
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+
+    // ===================================
+    // 7. PARALLAX IMAGES
+    // ===================================
+    const parallaxImages = document.querySelectorAll('.aspect-\\[4\\/5\\] img, .aspect-video img');
+
+    window.addEventListener('scroll', () => {
+        requestAnimationFrame(() => {
+            parallaxImages.forEach(img => {
+                const rect = img.parentElement.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    img.style.transform = `translateY(${-(rect.top * 0.05)}px) scale(1.05)`;
+                }
+            });
+        });
+    });
+
+
+    // ===================================
+    // 8. MUSIC PLAYER (YouTube background)
+    // ===================================
+    const musicBtn = document.getElementById('music-player-btn');
+    const musicPanel = document.getElementById('music-panel');
+    const trackItems = document.querySelectorAll('.music-track-item');
+    const nowPlayingName = document.getElementById('now-playing-name');
+    const currentSongName = document.getElementById('current-song-name');
+    const playIcon = document.getElementById('play-icon');
+    let isPanelOpen = false;
+    let currentTrackId = '1QgCxxPGkTXZ20m6rA9VOm';
+
+    function selectTrack(trackId, trackName) {
+        currentTrackId = trackId;
+
+        // Update active state in list
+        trackItems.forEach(item => {
+            item.classList.toggle('active', item.getAttribute('data-track') === trackId);
+        });
+        if (nowPlayingName) nowPlayingName.textContent = trackName;
+        if (currentSongName) currentSongName.textContent = trackName;
+
+        // Load & play the corresponding YouTube video
+        if (typeof songVideoIds !== 'undefined') {
+            const song = songVideoIds.find(s => s.trackId === trackId);
+            if (song && typeof ytLoadVideo === 'function') {
+                ytLoadVideo(song.videoId);
+            }
+        }
+    }
+
+    // Track item click
+    trackItems.forEach(item => {
+        item.addEventListener('click', () => {
+            selectTrack(item.getAttribute('data-track'), item.getAttribute('data-name'));
+        });
+    });
+
+    // Music button: single click toggles play/pause, long press or when panel closed opens panel
+    if (musicBtn) {
+        // Add a pause/play button inside the panel
+        const pauseBtn = document.createElement('button');
+        pauseBtn.className = 'music-track-item';
+        pauseBtn.style.cssText = 'justify-content:center; margin-top:0.5rem; border-top:1px solid rgba(255,237,210,0.1); padding-top:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-size:0.65rem;';
+        pauseBtn.setAttribute('data-i18n-pause', 'true');
+        pauseBtn.textContent = 'Pausar';
+        musicPanel.appendChild(pauseBtn);
+
+        pauseBtn.addEventListener('click', () => {
+            if (typeof ytTogglePlay === 'function') ytTogglePlay();
+            // Update button text
+            setTimeout(() => {
+                pauseBtn.textContent = (typeof ytIsPlaying !== 'undefined' && ytIsPlaying) ? 'Pausar' : 'Reproducir';
+            }, 100);
+        });
+
+        musicBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            isPanelOpen = !isPanelOpen;
+            musicPanel.classList.toggle('open', isPanelOpen);
+        });
+    }
+
+    // Close panel on click outside
+    document.addEventListener('click', (e) => {
+        if (isPanelOpen && !musicPanel.contains(e.target) && !musicBtn.contains(e.target)) {
+            isPanelOpen = false;
+            musicPanel.classList.remove('open');
+        }
+    });
+
+
+    // ===================================
+    // 9. SCROLL INDICATOR HIDE
+    // ===================================
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.pointerEvents = 'none';
+            } else {
+                scrollIndicator.style.pointerEvents = 'auto';
+            }
+        });
+    }
+
+});
