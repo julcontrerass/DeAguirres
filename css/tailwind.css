@@ -293,7 +293,105 @@ button {
 }
 
 /* ===================================
-   HERO SECTION
+   HERO NEW LAYOUT (fondo + people cutout + text)
+   =================================== */
+.hero-new {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-people-wrap {
+  pointer-events: none;
+  bottom: 0;
+  width: 75%;
+  height: auto;
+}
+
+.hero-people-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-text-block {
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: max-content;
+}
+
+/* Large desktop */
+@media (min-width: 1440px) {
+  .hero-people-wrap {
+    width: 75%;
+  }
+
+  .hero-text-block {
+    top: 20%;
+  }
+}
+
+/* Tablet landscape */
+@media (max-width: 1024px) {
+  .hero-people-wrap {
+    width: 85%;
+  }
+
+  .hero-text-block {
+    top: 18%;
+  }
+}
+
+/* Tablet portrait */
+@media (max-width: 768px) {
+  .hero-people-wrap {
+    width: 110%;
+    max-width: none;
+  }
+
+  .hero-text-block {
+    top: 16%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .hero-people-wrap {
+    width: 140%;
+    max-width: none;
+  }
+
+  .hero-text-block {
+    top: 15%;
+  }
+}
+
+/* Very small mobile */
+@media (max-width: 360px) {
+  .hero-people-wrap {
+    width: 160%;
+  }
+
+  .hero-text-block {
+    top: 13%;
+  }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) {
+  .hero-people-wrap {
+    width: 60%;
+  }
+
+  .hero-text-block {
+    top: 5%;
+  }
+}
+
+/* ===================================
+   HERO SECTION (legacy)
    =================================== */
 .hero-section {
   position: relative;
@@ -1200,6 +1298,57 @@ button {
   .platform-btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+/* ===================================
+   MUSIC PLAYER RESPONSIVE
+   =================================== */
+@media (max-width: 768px) {
+  .music-player-btn {
+    width: 48px;
+    height: 48px;
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .music-player-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .sound-bars {
+    height: 14px;
+    gap: 2px;
+  }
+
+  .sound-bar {
+    width: 2.5px;
+  }
+
+  .music-panel {
+    width: calc(100vw - 2rem);
+    right: 1rem;
+    bottom: 4.5rem;
+  }
+
+  .music-song-name {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .music-player-btn {
+    width: 44px;
+    height: 44px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .music-panel {
+    width: calc(100vw - 1.5rem);
+    right: 0.75rem;
+    bottom: 4rem;
   }
 }
 

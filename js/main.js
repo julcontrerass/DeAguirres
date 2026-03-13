@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ===================================
-    // 5. NAVBAR SCROLL EFFECT
+    // 5. NAVBAR SCROLL EFFECT & DYNAMIC COLOR
     // ===================================
     const navbar = document.getElementById('navbar');
 
@@ -219,6 +219,44 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.classList.add('py-6');
         }
     });
+
+    // Detect dark backgrounds to toggle text color
+    const sections = document.querySelectorAll('section');
+    const divider = document.querySelector('.lang-divider');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
+                if (entry.target.id === 'colabora') return;
+
+                // Determine if section is dark
+                const isDark = entry.target.classList.contains('bg-jungle');
+
+                if (isDark) {
+                    // Make text light
+                    navbar.classList.remove('text-bark', 'bg-sand-light/90');
+                    navbar.classList.add('text-cream', 'bg-jungle/90');
+                    if (divider) {
+                         divider.classList.remove('text-bark/40');
+                         divider.classList.add('text-cream/40');
+                    }
+                } else {
+                    // Make text dark
+                    navbar.classList.add('text-bark', 'bg-sand-light/90');
+                    navbar.classList.remove('text-cream', 'bg-jungle/90');
+                    if (divider) {
+                         divider.classList.add('text-bark/40');
+                         divider.classList.remove('text-cream/40');
+                    }
+                }
+            }
+        });
+    }, { 
+        rootMargin: "-10% 0px -80% 0px", // Detect when section reaches near top (behind navbar)
+        threshold: [0, 0.1, 0.5] 
+    });
+
+    sections.forEach(sec => sectionObserver.observe(sec));
 
 
     // ===================================
