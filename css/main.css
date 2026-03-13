@@ -3905,9 +3905,15 @@ html {
   #about,
   #serie,
   #music,
-  #contacto,
   #colabora {
     justify-content: flex-start;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Contacto: centrado verticalmente en mobile */
+  #contacto {
+    justify-content: center;
     padding-top: 5rem;
     padding-bottom: 3rem;
   }
