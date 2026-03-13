@@ -1708,11 +1708,11 @@ button {
 .hero-new {
   position: relative;
   width: 100%;
+  max-width: 100%;
   overflow: hidden;
-  height: 100vh;         /* fallback */
-  height: 100svh;        /* Safari iOS 15.4+ */
-  height: 100dvh;        /* modern browsers */
-  min-height: -webkit-fill-available; /* older Safari */
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
 }
 
 .hero-people-wrap {
@@ -3871,46 +3871,99 @@ a:focus {
   min-height: 100dvh;
 }
 
-/* About: cap image aspect on mobile so it doesn't overflow viewport */
-@media (max-width: 767px) {
-  #about .aspect-\[4\/5\] {
-    aspect-ratio: 3 / 2;
-    max-height: 45vw;
-  }
-
-  /* Reduce header spacing in serie to help content fit */
-  #serie .border-b {
-    margin-bottom: 1.5rem;
-  }
-
-  /* Music section: tighter spacing on mobile */
-  #music .mb-12 {
-    margin-bottom: 1.5rem;
-  }
-
-  /* Colabora: tighter header spacing */
-  #colabora .mb-16 {
-    margin-bottom: 2rem;
-  }
-
-  /* Contacto: smaller heading on mobile */
-  #contacto h2 {
-    font-size: clamp(2rem, 8vw, 3rem);
-  }
+/* -----------------------------------------------
+   HERO: garantizar cobertura total en móvil
+----------------------------------------------- */
+.hero-new {
+  width: 100%;
+  max-width: 100vw;
 }
 
-/* Serie: add bottom padding to compensate card stagger translateY */
-@media (min-width: 1024px) {
-  #serie .grid.grid-cols-1 {
-    padding-bottom: 4rem;
-  }
-}
-
-/* Music: featured single image max size on mobile */
+/* -----------------------------------------------
+   MÓVIL (< 768px): layout desde arriba, sin centrado
+   que genera espacio vacío cuando el contenido es corto
+----------------------------------------------- */
 @media (max-width: 767px) {
-  #music .max-w-sm.aspect-square {
-    max-width: 200px;
+
+  /* Secciones: empiezan desde arriba con espacio para el navbar */
+  #about,
+  #serie,
+  #music,
+  #contacto,
+  #colabora {
+    justify-content: flex-start;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+
+  /* ---- ABOUT ---- */
+  /* Ocultar imagen en móvil para que el texto quepa en pantalla */
+  #about .grid > div:last-child {
+    display: none;
+  }
+  #about h2 {
+    font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+    margin-bottom: 1.5rem;
+  }
+  #about .mb-8 {
+    margin-bottom: 1rem;
+  }
+
+  /* ---- LA SERIE ---- */
+  /* 2 columnas en móvil para que las 3 cards quepan mejor */
+  #serie .grid-cols-1 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  #serie .mb-16 {
+    margin-bottom: 1.25rem;
+  }
+  #serie .text-4xl {
+    font-size: 1.75rem;
+  }
+  /* Reducir texto de cards */
+  #serie .text-3xl {
+    font-size: 1.25rem;
+  }
+
+  /* ---- MÚSICA ---- */
+  /* Imagen del single más compacta */
+  #music .aspect-square {
+    max-width: 180px;
     margin-left: auto;
     margin-right: auto;
+  }
+  #music .mb-12 {
+    margin-bottom: 1rem;
+  }
+  #music h2 {
+    font-size: 2.5rem;
+  }
+  #music .mt-8 {
+    margin-top: 1rem;
+  }
+
+  /* ---- CONTACTO ---- */
+  #contacto h2 {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  #contacto .mb-6 {
+    margin-bottom: 0.75rem;
+  }
+
+  /* ---- COLABORA ---- */
+  #colabora .mb-16 {
+    margin-bottom: 1.25rem;
+  }
+  #colabora .mb-6 {
+    margin-bottom: 0.5rem;
+  }
+  #colabora h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  #colabora .text-xl {
+    font-size: 1rem;
   }
 }

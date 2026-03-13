@@ -13,7 +13,7 @@
   <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fdeaguirre3616back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.12"></script>
   <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2"></script>
   </head>
-<body class="antialiased bg-sand-light text-bark overflow-x-hidden">
+<body class="antialiased bg-sand-light text-bark" style="overflow-x: clip;">
 
     <!-- Custom Cursor -->
     <div class="cursor-dot" id="cursor-dot"></div>
@@ -104,9 +104,15 @@
     <!-- Hero Section -->
     <section class="hero-new relative w-full overflow-hidden">
         <!-- Background: jungle plants -->
-        <div class="absolute inset-0 w-full h-full">
-            <img src="./assets/fondo.png" alt="Selva" class="w-full h-full object-cover object-center">
-            <!-- Subtle dark overlay for readability on right side -->
+        <div class="absolute inset-0" style="
+            background-image: url('./assets/fondo.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+        ">
+            <!-- Subtle dark overlay for readability -->
             <div class="absolute inset-0" style="background: rgba(15,40,25,0.25);"></div>
             <!-- Bottom fade green -->
             <div class="absolute bottom-0 left-0 right-0 h-40" style="background: linear-gradient(to bottom, transparent, #B8D4BE);"></div>
@@ -141,7 +147,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 md:py-24 bg-sand-light text-bark relative flex flex-col justify-center beach-sand-bg">
+    <section id="about" class="py-16 md:py-24 bg-sand-light text-bark relative flex flex-col justify-center beach-sand-bg">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 items-center">
                 <div class="md:col-span-7 reveal-left">
@@ -165,7 +171,7 @@
     </section>
 
     <!-- La Serie Section -->
-    <section id="serie" class="py-20 md:py-24 bg-mint text-bark relative flex flex-col justify-center overflow-hidden tropical-leaf-bg">
+    <section id="serie" class="py-16 md:py-24 bg-mint text-bark relative flex flex-col justify-center overflow-hidden tropical-leaf-bg">
         <!-- Floating shapes background -->
         <div class="absolute top-0 right-0 w-96 h-96 bg-coral/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 w-80 h-80 bg-sage/20 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
@@ -252,7 +258,7 @@
     </section>
 
     <!-- Music & Discography Section -->
-    <section id="music" class="py-20 md:py-24 bg-sand text-bark flex flex-col justify-center sun-glow-bg">
+    <section id="music" class="py-16 md:py-24 bg-sand text-bark flex flex-col justify-center sun-glow-bg">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
 
             <div class="mb-12 reveal">
@@ -329,7 +335,7 @@
     </section>
 
     <!-- Contacto Section -->
-    <section id="contacto" class="py-20 md:py-24 bg-sand-light text-bark flex flex-col justify-center beach-sand-bg">
+    <section id="contacto" class="py-16 md:py-24 bg-sand-light text-bark flex flex-col justify-center beach-sand-bg">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
             <div class="reveal-left">
                 <p class="text-[0.65rem] tracking-[0.3em] font-bold uppercase mb-6 opacity-70" data-i18n="contact.label">Contacto</p>
@@ -351,7 +357,7 @@
     </section>
 
     <!-- Apoyo Section -->
-    <section id="colabora" class="py-20 md:py-24 bg-jungle text-cream flex flex-col justify-center tropical-leaf-bg">
+    <section id="colabora" class="py-16 md:py-24 bg-jungle text-cream flex flex-col justify-center tropical-leaf-bg">
         <div class="max-w-6xl mx-auto px-6 lg:px-12 w-full relative z-10">
             <div class="text-center mb-16">
                 <p class="text-[0.65rem] tracking-[0.3em] font-bold uppercase mb-4 opacity-70 text-goldsoft reveal" data-i18n="support.label">Apoyo</p>
