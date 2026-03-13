@@ -1709,6 +1709,10 @@ button {
   position: relative;
   width: 100%;
   overflow: hidden;
+  height: 100vh;         /* fallback */
+  height: 100svh;        /* Safari iOS 15.4+ */
+  height: 100dvh;        /* modern browsers */
+  min-height: -webkit-fill-available; /* older Safari */
 }
 
 .hero-people-wrap {
@@ -3852,5 +3856,61 @@ a:focus {
   .lg\:text-7xl {
     font-size: 4.5rem;
     line-height: 1;
+  }
+}
+
+/* ===================================
+   FULL-HEIGHT RESPONSIVE SECTIONS
+   =================================== */
+
+#about,
+#serie,
+#music,
+#contacto,
+#colabora {
+  min-height: 100dvh;
+}
+
+/* About: cap image aspect on mobile so it doesn't overflow viewport */
+@media (max-width: 767px) {
+  #about .aspect-\[4\/5\] {
+    aspect-ratio: 3 / 2;
+    max-height: 45vw;
+  }
+
+  /* Reduce header spacing in serie to help content fit */
+  #serie .border-b {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Music section: tighter spacing on mobile */
+  #music .mb-12 {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Colabora: tighter header spacing */
+  #colabora .mb-16 {
+    margin-bottom: 2rem;
+  }
+
+  /* Contacto: smaller heading on mobile */
+  #contacto h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+}
+
+/* Serie: add bottom padding to compensate card stagger translateY */
+@media (min-width: 1024px) {
+  #serie .grid.grid-cols-1 {
+    padding-bottom: 4rem;
+  }
+}
+
+/* Music: featured single image max size on mobile */
+@media (max-width: 767px) {
+  #music .max-w-sm.aspect-square {
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
