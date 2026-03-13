@@ -3860,6 +3860,22 @@ a:focus {
 }
 
 /* ===================================
+   FIX HORIZONTAL OVERFLOW GLOBAL
+   =================================== */
+
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Navbar: nunca más ancho que el viewport */
+#navbar {
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ===================================
    FULL-HEIGHT RESPONSIVE SECTIONS
    =================================== */
 
@@ -3897,16 +3913,41 @@ a:focus {
   }
 
   /* ---- ABOUT ---- */
-  /* Ocultar imagen en móvil para que el texto quepa en pantalla */
+  /* Mostrar imagen en mobile completa, sin recorte */
   #about .grid > div:last-child {
-    display: none;
+    display: block;
+  }
+  #about .aspect-\[4\/5\] {
+    aspect-ratio: auto;
+    max-height: none;
+    height: auto;
+  }
+  #about .aspect-\[4\/5\] img {
+    height: auto;
+    width: 80%;
+    max-width: 280px;
+    display: block;
+    object-fit: cover;
+    margin: 0 auto;
   }
   #about h2 {
     font-size: clamp(1.6rem, 6.5vw, 2.2rem);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
   #about .mb-8 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  /* Reducir gap entre columnas en mobile */
+  #about .gap-16 {
+    gap: 1.25rem;
+  }
+
+  /* ---- HERO: texto y personas ---- */
+  .hero-text-block {
+    top: 30%;
+  }
+  .hero-people-wrap {
+    width: 165%;
   }
 
   /* ---- LA SERIE ---- */
@@ -3927,6 +3968,15 @@ a:focus {
   }
 
   /* ---- MÚSICA ---- */
+  /* Títulos centrados en mobile */
+  #music .mb-12 > p,
+  #music .mb-12 > h2,
+  #music .lg\:col-span-5 > p {
+    text-align: center;
+  }
+  #music .mb-12 {
+    text-align: center;
+  }
   /* Imagen del single más compacta */
   #music .aspect-square {
     max-width: 180px;
