@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof songVideoIds !== 'undefined') {
             const song = songVideoIds.find(s => s.trackId === trackId);
             if (song && typeof ytLoadVideo === 'function') {
-                ytLoadVideo(song.videoId);
+                ytLoadVideo(song.videoId, song.startSeconds);
             }
         }
     }

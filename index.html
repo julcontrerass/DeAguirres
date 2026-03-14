@@ -471,11 +471,13 @@
 
         // YouTube video IDs for each song (mapped by Spotify track ID)
         var songVideoIds = [
-            { trackId: '1QgCxxPGkTXZ20m6rA9VOm', videoId: 'fgQo2VvaLmc', name: 'Cae el Sol' },
-            { trackId: '0qusps3vA2y2mVgkJDvOtn', videoId: 'CG83ffs900E', name: 'Delante de Ti' },
-            { trackId: '4sbnxyxwjVr09byJqBC4uT', videoId: 'cucGziAi8hA', name: 'Shalom (Live)' },
-            { trackId: '6kKZYejq3xrKJ011AOJ1Tn', videoId: 'enoMVREPgQE', name: 'Confiado' }
+            { trackId: '1QgCxxPGkTXZ20m6rA9VOm', videoId: 'fgQo2VvaLmc', name: 'Cae el Sol', startSeconds: 7 },
+            { trackId: '0qusps3vA2y2mVgkJDvOtn', videoId: 'CG83ffs900E', name: 'Delante de Ti', startSeconds: 77 }, // 1:17 = 77s
+            { trackId: '4sbnxyxwjVr09byJqBC4uT', videoId: 'cucGziAi8hA', name: 'Shalom (Live)', startSeconds: 13 },
+            { trackId: '6kKZYejq3xrKJ011AOJ1Tn', videoId: 'enoMVREPgQE', name: 'Confiado', startSeconds: 0 }
         ];
+
+        var currentStartSeconds = 7; // Default for 'Cae el Sol'
 
         function onYouTubeIframeAPIReady() {
             ytPlayer = new YT.Player('youtube-player', {
@@ -490,6 +492,7 @@
                     modestbranding: 1,
                     rel: 0,
                     loop: 1,
+                    start: 7, // Default start for 'Cae el Sol'
                     playlist: 'fgQo2VvaLmc'
                 },
                 events: {
@@ -501,6 +504,7 @@
                     'onStateChange': function(event) {
                         var btn = document.getElementById('music-player-btn');
                         var playIcon = document.getElementById('play-icon');
+                        
                         if (event.data === YT.PlayerState.PLAYING) {
                             ytIsPlaying = true;
                             btn.classList.add('playing');
@@ -509,6 +513,12 @@
                             ytIsPlaying = false;
                             btn.classList.remove('playing');
                             if (playIcon) playIcon.style.display = 'block';
+                        }
+
+                        // Handle loop back to custom start time
+                        if (event.data === YT.PlayerState.ENDED) {
+                            ytPlayer.seekTo(currentStartSeconds);
+                            ytPlayer.playVideo();
                         }
                     }
                 }
@@ -524,9 +534,13 @@
             }
         }
 
-        function ytLoadVideo(videoId) {
+        function ytLoadVideo(videoId, startSeconds) {
             if (!ytReady || !ytPlayer) return;
-            ytPlayer.loadVideoById({ videoId: videoId });
+            currentStartSeconds = startSeconds || 0;
+            ytPlayer.loadVideoById({ 
+                videoId: videoId,
+                startSeconds: currentStartSeconds
+            });
         }
     </script>
 
