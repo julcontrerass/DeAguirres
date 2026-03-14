@@ -30,8 +30,8 @@ module.exports = {
         bark: '#3B4A42',          // corteza oscura (texto sobre claro)
       },
       fontFamily: {
-        display: ['Newsreader', 'serif'],
-        body: ['DM Sans', 'sans-serif'],
+        display: ['"Excalibur Nouveau"', 'serif'],
+        body: ['"Excalibur Nouveau"', 'sans-serif'],
       },
       spacing: {
         'xs': '0.5rem',
