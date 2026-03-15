@@ -981,11 +981,11 @@ video {
 
 .border-jungle {
   --tw-border-opacity: 1;
-  border-color: rgb(90 61 107 / var(--tw-border-opacity, 1));
+  border-color: rgb(131 110 144 / var(--tw-border-opacity, 1));
 }
 
 .border-palm\/50 {
-  border-color: rgb(255 155 66 / 0.5);
+  border-color: rgb(255 180 113 / 0.5);
 }
 
 .bg-coral {
@@ -1010,34 +1010,34 @@ video {
 }
 
 .bg-jungle-deep\/20 {
-  background-color: rgb(53 31 66 / 0.2);
+  background-color: rgb(104 87 113 / 0.2);
 }
 
 .bg-jungle-deep\/30 {
-  background-color: rgb(53 31 66 / 0.3);
+  background-color: rgb(104 87 113 / 0.3);
 }
 
 .bg-mint {
   --tw-bg-opacity: 1;
-  background-color: rgb(44 78 54 / var(--tw-bg-opacity, 1));
+  background-color: rgb(110 144 119 / var(--tw-bg-opacity, 1));
 }
 
 .bg-palm {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 155 66 / var(--tw-bg-opacity, 1));
+  background-color: rgb(255 180 113 / var(--tw-bg-opacity, 1));
 }
 
 .bg-sand {
   --tw-bg-opacity: 1;
-  background-color: rgb(175 105 56 / var(--tw-bg-opacity, 1));
+  background-color: rgb(211 156 113 / var(--tw-bg-opacity, 1));
 }
 
 .bg-sand-dark\/30 {
-  background-color: rgb(143 82 40 / 0.3);
+  background-color: rgb(195 143 106 / 0.3);
 }
 
 .bg-sand\/90 {
-  background-color: rgb(175 105 56 / 0.9);
+  background-color: rgb(211 156 113 / 0.9);
 }
 
 .bg-transparent {
@@ -3581,12 +3581,12 @@ a:focus {
 
 .hover\:bg-jungle:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(90 61 107 / var(--tw-bg-opacity, 1));
+  background-color: rgb(131 110 144 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-palm:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 155 66 / var(--tw-bg-opacity, 1));
+  background-color: rgb(255 180 113 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-coral:hover {

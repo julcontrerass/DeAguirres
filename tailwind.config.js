@@ -8,24 +8,24 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // 🌸 Groovy Hippie Aesthetic — Colores Vibrantes & Retro
+        // 🌸 Groovy Hippie Aesthetic — Colores Vibrantes & Retro (versión más clara)
         sand: {
-          DEFAULT: '#AF6938',    // terracota hippie (secciones A)
-          light: '#C07B45',      // terracota claro
-          dark: '#8F5228',       // terracota oscuro (footer)
+          DEFAULT: '#D39C71',    // terracota claro (secciones A)
+          light: '#DCA77D',      // terracota más claro
+          dark: '#C38F6A',       // terracota oscuro (footer)
         },
         jungle: {
-          DEFAULT: '#5A3D6B',    // morado psicodélico oscuro (selva media)
-          deep: '#351F42',       // morado profundo (hero)
-          light: '#8858A8',      // morado claro
+          DEFAULT: '#836E90',    // morado psicodélico oscuro (selva media)
+          deep: '#685771',       // morado profundo (hero)
+          light: '#A682BE',      // morado claro
         },
-        sage: '#D1AC00',          // mostaza brillante
-        palm: '#FF9B42',          // naranja atardecer
-        mint: '#2C4E36',          // verde bosque hippie (secciones B)
+        sage: '#DDC140',          // mostaza brillante
+        palm: '#FFB471',          // naranja atardecer
+        mint: '#6E9077',          // verde bosque claro (secciones B)
         coral: '#FFFDF7',         // blanco crema (acento texto)
-        ocean: '#4B9CB8',         // azul retro
-        driftwood: '#965C3B',     // marrón madera
-        goldsoft: '#E8B62C',      // dorado sol
+        ocean: '#78B5CA',         // azul retro
+        driftwood: '#B0856C',     // marrón madera
+        goldsoft: '#EEC861',      // dorado sol
         cream: '#FFFDF7',         // crema/blanco roto (texto sobre oscuro)
         bark: '#2B2117',          // marrón muy oscuro (texto sobre claro)
       },
