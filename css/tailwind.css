@@ -82,12 +82,18 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--color-sand-light);
   color: var(--color-bark);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 
@@ -2044,3 +2050,5 @@ a:focus {
   border-radius: 50%;
   transform: rotate(-15deg);
 }
+
+
