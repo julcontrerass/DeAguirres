@@ -8,26 +8,26 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // 🌴 Playa Selva Mexicana — Tonos Suaves & Claros
+        // 🌸 Groovy Hippie Aesthetic — Colores Vibrantes & Retro
         sand: {
-          DEFAULT: '#EDE1C8',    // arena cálida de playa
-          light: '#F0E4CE',      // arena clara cálida (secciones principales)
-          dark: '#D9C8A5',       // arena húmeda (footer)
+          DEFAULT: '#AF6938',    // terracota hippie (secciones A)
+          light: '#C07B45',      // terracota claro
+          dark: '#8F5228',       // terracota oscuro (footer)
         },
         jungle: {
-          DEFAULT: '#3D6B5B',    // selva media (secciones oscuras)
-          deep: '#2D5F4F',       // selva profunda (hero)
-          light: '#5A8F7B',      // selva clara
+          DEFAULT: '#5A3D6B',    // morado psicodélico oscuro (selva media)
+          deep: '#351F42',       // morado profundo (hero)
+          light: '#8858A8',      // morado claro
         },
-        sage: '#8BB09A',          // salvia suave
-        palm: '#B8D4BE',          // palma clara
-        mint: '#CDDDD0',          // menta suave con tono arena (serie section)
-        coral: '#D4906C',         // coral suave (acento principal)
-        ocean: '#7EB8AE',         // turquesa del caribe
-        driftwood: '#C4A882',     // madera a la deriva
-        goldsoft: '#D4B876',      // dorado suave
-        cream: '#FFF8EE',         // crema cálida (texto sobre oscuro)
-        bark: '#3B4A42',          // corteza oscura (texto sobre claro)
+        sage: '#D1AC00',          // mostaza brillante
+        palm: '#FF9B42',          // naranja atardecer
+        mint: '#2C4E36',          // verde bosque hippie (secciones B)
+        coral: '#FFFDF7',         // blanco crema (acento texto)
+        ocean: '#4B9CB8',         // azul retro
+        driftwood: '#965C3B',     // marrón madera
+        goldsoft: '#E8B62C',      // dorado sol
+        cream: '#FFFDF7',         // crema/blanco roto (texto sobre oscuro)
+        bark: '#2B2117',          // marrón muy oscuro (texto sobre claro)
       },
       fontFamily: {
         display: ['"Excalibur Nouveau"', 'serif'],
@@ -51,7 +51,7 @@ module.exports = {
         'soft': '0 4px 12px rgba(0, 0, 0, 0.08)',
         'medium': '0 8px 24px rgba(0, 0, 0, 0.12)',
         'hard': '0 20px 60px rgba(0, 0, 0, 0.2)',
-        'glow': '0 0 40px rgba(212, 144, 108, 0.3)',
+        'glow': '0 0 40px rgba(232, 182, 44, 0.35)',
       },
       backdropBlur: {
         xs: '4px',

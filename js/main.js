@@ -3,6 +3,11 @@
  * UX/UI Interactions, Custom Cursor, i18n, Music Player
  */
 
+// Fix viewport height for iOS Safari / Android browsers
+window.addEventListener('resize', () => {
+    document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // ===================================
@@ -27,6 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
             'series.encounter': 'Encuentro',
             'series.testimony': 'Testimonio',
             'series.covenant': 'Pacto',
+            'series.encounter.desc': 'Dos caminos distintos que Dios comenzó a tejer desde antes de que se conocieran. El comienzo de una historia que ninguno de los dos escribió solo.',
+            'series.testimony.desc': 'La voz de Dios hablando en medio de lo cotidiano. Momentos que marcaron sus vidas y los llevaron a decir sí a un llamado compartido.',
+            'series.covenant.desc': 'Dos vidas unidas ante Dios. Un pacto que no solo celebró el amor entre Pablo y Lina, sino también el ministerio que Él les encomendó juntos.',
+            'series.watchNow': 'Ver episodio',
             'music.label': 'Lanzamientos',
             'music.title': 'Música',
             'music.latest': 'Último Sencillo',
@@ -67,6 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
             'series.encounter': 'Encounter',
             'series.testimony': 'Testimony',
             'series.covenant': 'Covenant',
+            'series.encounter.desc': 'Two different paths that God began weaving together before they even met. The beginning of a story neither of them wrote alone.',
+            'series.testimony.desc': "God's voice speaking in the middle of the everyday. Moments that marked their lives and led them to say yes to a shared calling.",
+            'series.covenant.desc': 'Two lives united before God. A covenant that not only celebrated the love between Pablo and Lina, but also the ministry He entrusted to them together.',
+            'series.watchNow': 'Watch episode',
             'music.label': 'Releases',
             'music.title': 'Music',
             'music.latest': 'Latest Single',
@@ -227,27 +240,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
-                if (entry.target.id === 'colabora') return;
+                if (entry.target.id === 'colabora' || entry.target.id === 'contacto') return;
 
-                // Determine if section is dark
-                const isDark = entry.target.classList.contains('bg-jungle');
+                // All sections are dark — always use cream text
+                const isMint = entry.target.classList.contains('bg-mint');
 
-                if (isDark) {
-                    // Make text light
-                    navbar.classList.remove('text-bark', 'bg-sand-light/90');
-                    navbar.classList.add('text-cream', 'bg-jungle/90');
-                    if (divider) {
-                         divider.classList.remove('text-bark/40');
-                         divider.classList.add('text-cream/40');
-                    }
+                if (isMint) {
+                    navbar.classList.remove('text-cream', 'bg-sand/90');
+                    navbar.classList.add('text-cream', 'bg-mint/90');
+                    if (divider) divider.classList.add('text-cream/40');
                 } else {
-                    // Make text dark
-                    navbar.classList.add('text-bark', 'bg-sand-light/90');
-                    navbar.classList.remove('text-cream', 'bg-jungle/90');
-                    if (divider) {
-                         divider.classList.add('text-bark/40');
-                         divider.classList.remove('text-cream/40');
-                    }
+                    navbar.classList.remove('text-cream', 'bg-mint/90');
+                    navbar.classList.add('text-cream', 'bg-sand/90');
+                    if (divider) divider.classList.add('text-cream/40');
                 }
             }
         });
